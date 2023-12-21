@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="360.0" prefWidth="518.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.beta5.PrimaryController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Wallet laden">
+              <items>
+                  <MenuItem fx:id="loadWalletFile" mnemonicParsing="false" onAction="#handleLoadWalletFile" text="Wallet-Datei auswählen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="loadPaperWallet" mnemonicParsing="false" onAction="#handleLoadPaperWallet" text="Privater Schlüssel eingeben" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Wallet erzeugen">
+              <items>
+                <MenuItem fx:id="genWalletFile" mnemonicParsing="false" onAction="#handleGenWalletFile" text="Wallet-Datei erzeugen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="genPaperWallet" mnemonicParsing="false" onAction="#handleGenPaperWallet" text="Paper-Wallet erzeugen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="genFileFromPaper" mnemonicParsing="false" onAction="#handleFileFromPaper" text="Wallet-Datei aus Paper-Wallet erzeugen" />
+              </items>
+            </Menu>
+         </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="337.0" prefWidth="518.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="14.0" prefHeight="38.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox prefHeight="0.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="addressLabel" prefHeight="20.0" prefWidth="200.0" text="Adresse:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="15.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="balanceLabel" prefHeight="20.0" prefWidth="200.0" text="Guthaben:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="balanceText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="4.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="uncBalanceLabel" prefHeight="20.0" prefWidth="200.0" text="in Transaktion:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="uncBalanceText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="10.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="finBalanceLabel" prefHeight="20.0" prefWidth="200.0" text="finales Guthaben:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="finBalanceText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="478.0">
+                     <children>
+                        <Label fx:id="avaBalanceLabel" prefWidth="200.0" text="für Transaktionen verfügbar:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip text="Wenn Transaktionen unbestätigt sind, kann es sein, dass das verfügbare Guthaben bei 0 liegt. Sobald die Transaktionen bestätigt wurden, sollte das finale Guthaben zur Verfügung stehen." />
+                           </tooltip>
+                        </Label>
+                        <Text fx:id="avaBalanceText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="totReceivedLabel" prefHeight="20.0" prefWidth="200.0" text="Summe empfangener Bitcoin:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="totReceivedText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="2.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="totSentLabel" prefHeight="20.0" prefWidth="200.0" text="Summe gesendeter Bitcoin:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="totSentText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="3.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="finNtxLabel" prefHeight="20.0" prefWidth="200.0" text="Transaktionen gesamt:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="finNtxText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="ntxLabel" prefHeight="20.0" prefWidth="200.0" text="davon bestätigt:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="ntxText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="uncNtxLabel" prefHeight="20.0" prefWidth="200.0" text="davon unbestätigt:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="uncNtxText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="4.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="networkLabel" prefHeight="20.0" prefWidth="200.0" text="Netzwerk: ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="networkText" strokeType="OUTSIDE" strokeWidth="0.0" text="Testnetzwerk" wrappingWidth="280.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="sendTx" mnemonicParsing="false" onAction="#handleSendTx" text="Bitcoin senden" />
+                        <Button fx:id="refreshInformation" mnemonicParsing="false" onAction="#handleRefreshInformation" text="Informationen aktualisieren" />
+                        <Button fx:id="showWalletDetails" mnemonicParsing="false" onAction="#handleShowWalletDetails" text="Wallet Details" />
+                        <Button fx:id="switchNetwork" mnemonicParsing="false" onAction="#handleSwitchNetwork" text="Netzwerk wechseln" />
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="scrollLog" editable="false" prefHeight="57.0" prefWidth="478.0" />
+               </children>
+            </VBox>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
