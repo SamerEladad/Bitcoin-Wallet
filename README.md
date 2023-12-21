@@ -9,8 +9,9 @@ This project, developed as part of the IT Security lecture at Hochschule Bochum,
 - **Testnet and Mainnet Support**: Compatibility with both Bitcoin Testnet and Mainnet, allowing for safe testing and real transactions.
 
 ## Screenshot
-1. **App's GUI**
-   ![App's GUI](path_after_uploading_screenshot) 
+**App's GUI**
+
+![App's GUI](https://github.com/SamerEladad/Bitcoin-Wallet/blob/main/assets/images/Screenshot1.jpg) 
 
 ## Security Aspects
 - **Private Key Management**: Emphasis on secure generation and storage of private keys.
